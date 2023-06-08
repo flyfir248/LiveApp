@@ -32,8 +32,17 @@ def suggest():
                     'summary': movie_summary
                 })
             except exceptions.DisambiguationError:
-                # Skip the movie if there is a disambiguation error
+                # Handle DisambiguationError by skipping the movie
                 continue
+            except exceptions.PageError:
+                # Handle PageError by adding a fallback message
+                movie_summary = 'No data available'
+                suggestions.append({
+                    'title': movie['title'],
+                    'rating': movie['rating'],
+                    'image': movie.get('full-size cover url'),
+                    'summary': movie_summary
+                })
 
     # Render the suggestions template with the movie suggestions
     return render_template('suggestions.html', suggestions=suggestions)
