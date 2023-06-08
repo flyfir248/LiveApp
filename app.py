@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from imdb import IMDb
+from wikipedia import summary, exceptions
 
 app = Flask(__name__)
 ia = IMDb()
@@ -22,7 +23,17 @@ def suggest():
     for movie in movies:
         ia.update(movie)
         if movie.get('rating') and movie['rating'] >= min_rating:
-            suggestions.append(movie)
+            try:
+                movie_summary = summary(movie['title'], sentences=2)
+                suggestions.append({
+                    'title': movie['title'],
+                    'rating': movie['rating'],
+                    'image': movie.get('full-size cover url'),
+                    'summary': movie_summary
+                })
+            except exceptions.DisambiguationError:
+                # Skip the movie if there is a disambiguation error
+                continue
 
     # Render the suggestions template with the movie suggestions
     return render_template('suggestions.html', suggestions=suggestions)

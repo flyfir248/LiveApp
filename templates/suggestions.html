@@ -29,18 +29,21 @@
 </head>
 <body>
     <h1>Movie Suggestions</h1>
-    {% if suggestions %}
-        {% for movie in suggestions %}
-            <div class="movie">
-                <img src="{{ movie.get('full-size cover url') }}" alt="Movie Poster">
-                <div class="movie-info">
-                    <p class="movie-title">{{ movie.get('title') }}</p>
-                    <p class="movie-rating">Rating: {{ movie.get('rating') }}</p>
+    {% extends 'index.html' %}
+
+{% block suggestions %}
+    {% for suggestion in suggestions %}
+        <div class="movie-card">
+            <div class="movie-info">
+                <img src="{{ suggestion.image }}" class="movie-image" alt="Movie Poster">
+                <div class="movie-details">
+                    <h2 class="movie-title">{{ suggestion.title }}</h2>
+                    <p class="movie-rating">Rating: {{ suggestion.rating }}</p>
+                    <p class="movie-summary">{{ suggestion.summary }}</p>
                 </div>
             </div>
-        {% endfor %}
-    {% else %}
-        <p>No suggestions found.</p>
-    {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}
 </body>
 </html>

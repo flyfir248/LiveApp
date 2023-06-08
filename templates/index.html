@@ -20,5 +20,12 @@
         <br><br>
         <input type="submit" value="Get Suggestions">
     </form>
+
+    <!-- Suggestions will be added dynamically here -->
+    <div id="suggestions-container">
+        {% block suggestions %}{% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

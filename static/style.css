@@ -49,3 +49,40 @@ input[type="submit"]:hover {
     margin-top: 10px;
     font-size: 14px;
 }
+
+.movie-card {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.movie-info {
+    display: flex;
+    align-items: center;
+}
+
+.movie-image {
+    width: 100px;
+    height: 150px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.movie-rating {
+    font-size: 16px;
+    color: #666;
+}
+
+.movie-summary {
+    margin-bottom: 10px;
+}
