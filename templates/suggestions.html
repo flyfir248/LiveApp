@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Suggestions</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='suggestions.css') }}">
+    <style>
+        /* CSS styles for movie details */
+        .movie-details {
+            font-size: 14px;
+            color: #666;
+        }
+        .movie-plot {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Suggestions</h1>
+    <div class="movie-container">
+        {% if suggestions %}
+            {% for movie in suggestions %}
+                <div class="movie-card">
+                    <img class="movie-image" src="{{ movie.get('full-size cover url') }}" alt="Movie Poster" onclick="zoomImage('{{ movie.get('full-size cover url') }}')">
+                    <p class="movie-title">{{ movie.get('title') }}</p>
+                    <p class="movie-details">Year: {{ movie.get('year') }}</p>
+                    <p class="movie-details">Genre: {{ movie.get('genres') | join(', ') }}</p>
+                    <p class="movie-details">Director: {{ movie.get('directors') | join(', ') }}</p>
+                    <p class="movie-plot">{{ movie.get('plot') }}</p>
+                    <p class="movie-rating">Rating: {{ movie.get('rating') }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No suggestions found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
