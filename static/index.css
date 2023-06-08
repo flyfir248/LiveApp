@@ -1,0 +1,57 @@
+/* index.css */
+:root {
+    --background-color: #36393f;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: var(--background-color);
+    color: #fff;
+    padding: 20px;
+}
+
+.content {
+    flex: 3;
+    padding: 20px;
+}
+
+.toggle-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #7289da;
+    color: #fff;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.search-box {
+    margin-bottom: 10px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+}
+
+.search-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #7289da;
+    color: #fff;
+    cursor: pointer;
+}

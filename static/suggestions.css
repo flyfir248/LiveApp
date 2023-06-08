@@ -6,42 +6,29 @@
 }
 
 .movie-card {
-    width: 300px;
+    width: 200px;
     margin: 20px;
     padding: 10px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .movie-image {
-    width: 200px;
-    height: 300px;
+    width: 150px;
+    height: 225px;
     object-fit: cover;
-    cursor: pointer;
-}
-
-.movie-details {
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .movie-title {
+    font-size: 18px;
     font-weight: bold;
-}
-
-.movie-info {
-    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .movie-rating {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.pagination {
-    margin-top: 20px;
-}
-
-.error-message {
-    color: red;
-    font-weight: bold;
+    font-size: 16px;
+    color: #666;
 }

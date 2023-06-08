@@ -2,41 +2,44 @@
 <html>
 <head>
     <title>Movie Suggestions</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='suggestions.css') }}">
+    <style>
+        .movie {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .movie img {
+            width: 100px;
+            height: 150px;
+            margin-right: 10px;
+        }
+        .movie-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .movie-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .movie-rating {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <h1>Movie Suggestions</h1>
-    <div class="movie-container">
-        {% if suggestions %}
-            {% for movie in suggestions %}
-                <div class="movie-card">
-                    <img class="movie-image" src="{{ movie.get('full-size cover url') }}" alt="Movie Poster">
-                    <div class="movie-details">
-                        <p class="movie-title">{{ movie.get('title') }}</p>
-                        <p class="movie-info">Year: {{ movie.get('year') }}</p>
-                        <p class="movie-info">Genre: {{ movie.get('genres') | join(', ') }}</p>
-                        <p class="movie-info">Director: {{ movie.get('directors') | join(', ') }}</p>
-                        <p class="movie-info">Plot: {{ movie.get('plot') }}</p>
-                        <p class="movie-rating">Rating: {{ movie.get('rating') }}</p>
-                    </div>
+    {% if suggestions %}
+        {% for movie in suggestions %}
+            <div class="movie">
+                <img src="{{ movie.get('full-size cover url') }}" alt="Movie Poster">
+                <div class="movie-info">
+                    <p class="movie-title">{{ movie.get('title') }}</p>
+                    <p class="movie-rating">Rating: {{ movie.get('rating') }}</p>
                 </div>
-            {% endfor %}
-        {% else %}
-            <p>No suggestions found.</p>
-        {% endif %}
-    </div>
-
-    <div class="pagination">
-        {% if page > 1 %}
-            <a href="{{ url_for('suggest', page=page-1) }}">Previous</a>
-        {% endif %}
-        {% if page < total_pages %}
-            <a href="{{ url_for('suggest', page=page+1) }}">Next</a>
-        {% endif %}
-    </div>
-
-    {% if error %}
-        <p class="error-message">{{ error }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No suggestions found.</p>
     {% endif %}
 </body>
 </html>
