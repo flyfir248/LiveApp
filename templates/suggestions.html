@@ -29,21 +29,21 @@
 </head>
 <body>
     <h1>Movie Suggestions</h1>
-    {% extends 'index.html' %}
-
-{% block suggestions %}
     {% for suggestion in suggestions %}
-        <div class="movie-card">
+        <div class="movie">
+            <img src="{{ suggestion.image }}" alt="Movie Poster" onclick="openPoster('{{ suggestion.image }}')">
             <div class="movie-info">
-                <img src="{{ suggestion.image }}" class="movie-image" alt="Movie Poster">
-                <div class="movie-details">
-                    <h2 class="movie-title">{{ suggestion.title }}</h2>
-                    <p class="movie-rating">Rating: {{ suggestion.rating }}</p>
-                    <p class="movie-summary">{{ suggestion.summary }}</p>
-                </div>
+                <h2 class="movie-title">{{ suggestion.title }}</h2>
+                <p class="movie-rating">Rating: {{ suggestion.rating }}</p>
+                <p class="movie-summary">{{ suggestion.summary }}</p>
             </div>
         </div>
     {% endfor %}
-{% endblock %}
+
+    <script>
+        function openPoster(imageUrl) {
+            window.open(imageUrl, 'Movie Poster', 'width=500,height=700');
+        }
+    </script>
 </body>
 </html>
